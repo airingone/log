@@ -108,19 +108,19 @@ func PanicTrack() {
 	Error("panic stack info %s", stackInfo)
 }
 
-type LogHander struct {
+type LogHandler struct {
 	Logger    *logrus.Logger
 	RequestId string //请求唯一Id
 }
 
-func NewLogHander(requestId string) LogHander {
-	var handle LogHander
+func NewLogHandler(requestId string) LogHandler {
+	var handle LogHandler
 	handle.Logger = RUSLOG
 
 	return handle
 }
 
-func (h *LogHander) Error(format string, msg ...interface{}) {
+func (h *LogHandler) Error(format string, msg ...interface{}) {
 	if h.Logger != nil {
 		_, file, line, _ := runtime.Caller(1)
 		strMsg := fmt.Sprintf(format, msg...)
@@ -128,7 +128,7 @@ func (h *LogHander) Error(format string, msg ...interface{}) {
 	}
 }
 
-func (h *LogHander) Debug(format string, msg ...interface{}) {
+func (h *LogHandler) Debug(format string, msg ...interface{}) {
 	if h.Logger != nil {
 		_, file, line, _ := runtime.Caller(1)
 		strMsg := fmt.Sprintf(format, msg...)
@@ -136,7 +136,7 @@ func (h *LogHander) Debug(format string, msg ...interface{}) {
 	}
 }
 
-func (h *LogHander) Info(format string, msg ...interface{}) {
+func (h *LogHandler) Info(format string, msg ...interface{}) {
 	if h.Logger != nil {
 		_, file, line, _ := runtime.Caller(1)
 		strMsg := fmt.Sprintf(format, msg...)
@@ -144,7 +144,7 @@ func (h *LogHander) Info(format string, msg ...interface{}) {
 	}
 }
 
-func (h *LogHander) Warn(format string, msg ...interface{}) {
+func (h *LogHandler) Warn(format string, msg ...interface{}) {
 	if h.Logger != nil {
 		_, file, line, _ := runtime.Caller(1)
 		strMsg := fmt.Sprintf(format, msg...)
@@ -152,7 +152,7 @@ func (h *LogHander) Warn(format string, msg ...interface{}) {
 	}
 }
 
-func (h *LogHander) Trace(format string, msg ...interface{}) {
+func (h *LogHandler) Trace(format string, msg ...interface{}) {
 	if h.Logger != nil {
 		_, file, line, _ := runtime.Caller(1)
 		strMsg := fmt.Sprintf(format, msg...)
@@ -160,7 +160,7 @@ func (h *LogHander) Trace(format string, msg ...interface{}) {
 	}
 }
 
-func (h *LogHander) Panic(format string, msg ...interface{}) {
+func (h *LogHandler) Panic(format string, msg ...interface{}) {
 	if h.Logger != nil {
 		_, file, line, _ := runtime.Caller(1)
 		strMsg := fmt.Sprintf(format, msg...)
@@ -168,7 +168,7 @@ func (h *LogHander) Panic(format string, msg ...interface{}) {
 	}
 }
 
-func (h *LogHander) Fatal(format string, msg ...interface{}) {
+func (h *LogHandler) Fatal(format string, msg ...interface{}) {
 	if h.Logger != nil {
 		_, file, line, _ := runtime.Caller(1)
 		strMsg := fmt.Sprintf(format, msg...)
