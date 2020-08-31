@@ -113,11 +113,11 @@ type LogHandler struct {
 	RequestId string //请求唯一Id
 }
 
-func NewLogHandler(requestId string) LogHandler {
+func NewLogHandler(requestId string) *LogHandler {
 	var handle LogHandler
 	handle.Logger = RUSLOG
 
-	return handle
+	return &handle
 }
 
 func (h *LogHandler) Error(format string, msg ...interface{}) {
