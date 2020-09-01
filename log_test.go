@@ -11,7 +11,7 @@ func TestLog(t *testing.T) {
 	InitLog(conf)
 
 	Error("errorf:%d", 1000)
-	logHander := NewLogHandler("123456789")
+	logHander := NewLogHandler()
 	logHander.Debug("debugf:%+v", conf)
 
 	//t.Logf("server.name: %s", serverName)
