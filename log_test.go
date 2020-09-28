@@ -5,14 +5,16 @@ import (
 	"testing"
 )
 
+//log test
 func TestLog(t *testing.T) {
 	config.InitConfig()
 	conf := config.GetLogConfig("log")
 	InitLog(conf)
 
-	Error("errorf:%d", 1000)
+	Error("error:%d", 1000)
 	logHander := NewLogHandler()
-	logHander.Debug("debugf:%+v", conf)
+	logHander.SetRequestId("123456")
+	logHander.Debug("debug:%+v", conf)
 
 	//t.Logf("server.name: %s", serverName)
 }

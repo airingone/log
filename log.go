@@ -9,8 +9,11 @@ import (
 	"time"
 )
 
+//log
+
 var RUSLOG *logrus.Logger
 
+//初始化日志，进程启动时初始化一次即可
 func InitLog(conf config.ConfigLog) {
 	RUSLOG = logrus.New()
 	timeStr := time.Now().Format("2006-01-02")
@@ -101,6 +104,7 @@ func Fatal(format string, msg ...interface{}) {
 	}
 }
 
+//打印panic信息，用于recover函数中
 func PanicTrack() {
 	buf := make([]byte, 4096)
 	n := runtime.Stack(buf, false)
@@ -113,6 +117,7 @@ type LogHandler struct {
 	RequestId string //请求唯一Id
 }
 
+//用于打印requestid的日志对象
 func NewLogHandler() *LogHandler {
 	var handle LogHandler
 	handle.Logger = RUSLOG
@@ -120,6 +125,7 @@ func NewLogHandler() *LogHandler {
 	return &handle
 }
 
+//设置requestid
 func (h *LogHandler) SetRequestId(requestId string) {
 	h.RequestId = requestId
 }
